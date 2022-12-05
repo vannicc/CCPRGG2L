@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class BasicOperation1 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in); // instantiation - created a new object (Scanner)
+		
+		System.out.println("Enter Three Numbers: ");
+		
+		int x = input.nextInt(); // declaration - variable x, y, z with data type integer
+		int y = input.nextInt();
+		int z = input.nextInt();
+		
+		input.close();
+		
+		int s = x + y + z; // sum
+		float a = s / 3f; // average
+		float p = x * y * z; // product
+		
+		System.out.println("Sum: " + s + "\nAverage: " + a + "\nProduct: " + p);
+
+	}
+}
