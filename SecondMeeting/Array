@@ -1,0 +1,14 @@
+public class Array {
+	public static void main(String[] args) {
+		int[] grades;
+		grades = new int [10];
+		
+		String[] students;
+		students = new String [10];
+		
+		students[0] = "Miko Clark";
+		grades [0] = 100;
+		
+		System.out.println(students[0]);
+	}
+}
