@@ -13,34 +13,34 @@ public class Attendance {
             System.out.print("\nEnter a number to delete: ");
             int num = scan.nextInt();
             
-			if (num == 15 || num == 19 || num == 25 || num == 30 || num == 45) {
-
-				for (int i = 0; i <= arr.length - 1; i++) {
-					if (arr[i] == num) {
-						arr[i] -= arr[i];
-					}
-					sum += arr[i];
+		if (num == 15 || num == 19 || num == 25 || num == 30 || num == 45) {
+			
+			for (int i = 0; i <= arr.length - 1; i++) {
+				if (arr[i] == num) {
+					arr[i] -= arr[i];
+				}
+				sum += arr[i];
 				}
 				if (sum != 0) {							// An if condition used to print "New List" if the program continues, and "Array is Empty" when the program ends
-				System.out.print("\nNew List: ");
+					System.out.print("\nNew List: ");
 				}
 				
-				for (int i = 0; i <= arr.length - 1; i++) {			// A for loop to loop through the array elements
-					if (arr[i] == num) {					// An if condition used to convert to zero the Array element that matched the user's input
-						arr[i] -= arr[i];
-					}
-					if (arr[i] != 0) {					// An if condition used to skip all the Array elements that was converted to zero
-						System.out.print(arr[i] + " ");
-					}
-					sum += arr[i];						// Computes the sum of the size of the array
+			for (int i = 0; i <= arr.length - 1; i++) {			// A for loop to loop through the array elements
+				if (arr[i] == num) {					// An if condition used to convert to zero the Array element that matched the user's input
+					arr[i] -= arr[i];
+				}
+				if (arr[i] != 0) {					// An if condition used to skip all the Array elements that was converted to zero
+					System.out.print(arr[i] + " ");
+				}
+				sum += arr[i];						// Computes the sum of the size of the array
 				}
 				if (sum == 0) {
-					System.out.println("\nArray is Empty");
+				System.out.println("\nArray is Empty");
 				}
-			} else {								// An else condition used to print "Error" when the user's input did not matched any Array element
-				System.out.println("\nError! No element found");
-				sum += 1;							// Adds 1 to the sum to prevent the program to stop prematurely
-			}
+		} else {									// An else condition used to print "Error" when the user's input did not matched any Array element
+			System.out.println("\nError! No element found");
+			sum += 1;								// Adds 1 to the sum to prevent the program to stop prematurely
+		}
         }
     }
 
