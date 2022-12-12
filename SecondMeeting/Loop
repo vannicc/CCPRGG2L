@@ -1,0 +1,11 @@
+public class Loop {
+	public static void main(String[]args){
+		
+		int x = 3;
+		int y = x--;
+		y += ++x;
+		
+		System.out.println("The value of x: " + x);
+		System.out.println("The value of y: " + y);
+	}
+}
