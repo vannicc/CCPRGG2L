@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class ArrayL {
+    
+    public static void main(String[] Args) {
+        Scanner scan = new Scanner(System.in);
+
+        ArrayList<Integer> array = new ArrayList<Integer>();
+        array.add(15);
+        array.add(30);
+        array.add(25);
+        array.add(19);
+        array.add(30);
+        array.add(40);
+
+        while (array.size() > 0) {
+
+            System.out.print("\nEnter a number to delete: ");
+            int input = scan.nextInt();
+
+            if (input == 15 || input == 19 || input == 25 || input == 30 || input == 40) {
+                for (int i = 0; i < array.size(); i++) {
+                    if (input == array.get(i)) {
+                        array.remove(i);
+                    }
+                }
+    
+                if (array.size() > 0) {
+                    System.out.print("New List: ");
+                }
+    
+                for (int i = 0; i < array.size(); i++) {
+                    System.out.print(array.get(i) + " ");
+                }
+    
+                if (array.size() == 0 ) {
+                    System.out.println("Array is Empty");
+                    System.out.println("");
+                    System.out.println("Program ends...");
+                }
+            } else {
+                System.out.print("Error! Element not found");
+            }
+        }
+    }
+}
