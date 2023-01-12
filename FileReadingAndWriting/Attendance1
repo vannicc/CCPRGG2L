@@ -27,10 +27,10 @@ public class Attendance1 {
 
             System.out.print("Output: ");
 
-            if (numberFound == true) {									// an if statement that prints "Found" if the input exists in the file
+            if (numberFound == true) {								// an if statement that prints "Found" if the input exists in the file
                 System.out.print("Found");
             }
-            else {														// an else statement that prints "Not Found" if the input not exists in the file
+            else {									// an else statement that prints "Not Found" if the input not exists in the file
                 System.out.println("Not Found");
             }
 
