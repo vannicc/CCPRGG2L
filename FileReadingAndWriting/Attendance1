@@ -10,16 +10,16 @@ public class Attendance1 {
         
         try {
             Scanner sc = new Scanner(System.in);							// instantiated a scanner object
-            System.out.print("Input: ");									// reads user's input
+            System.out.print("Input: ");								// reads user's input
             String input = sc.nextLine();
             sc.close();
 
             File readerObj = new File(numbersFile);
             Scanner Reader = new Scanner(readerObj);
             
-            while (Reader.hasNextLine()) {					// a while loop that reads the numbers file line by line and checks whether the input exists in the file
+            while (Reader.hasNextLine()) {				// a while loop that reads the numbers file line by line and checks whether the input exists in the file
             	String data = Reader.nextLine();
-            	if (data.equals(input)) {			// an if statement that tells the program if the input exists in the file, the variable "numberFound" becomes true
+            	if (data.equals(input)) {		// an if statement that tells the program if the input exists in the file, the variable "numberFound" becomes true
                     numberFound = true;
                 }
             }
