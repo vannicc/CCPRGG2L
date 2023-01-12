@@ -7,10 +7,10 @@ import java.util.Scanner;
  
 public class Attendance2 {   
 	
-	static String input = "";   																					                                    // declaration of static variables
+    static String input = "";   											// declaration of static variables
     static String newWord = "";     
     static boolean wordFound = false;
-    static String StringFile = "D:\\Attendance\\StringFile.txt";													                  // my file path                          
+    static String StringFile = "D:\\Attendance\\StringFile.txt";							// my file path                          
 
     static void modifyFile(String filePath, String previousString, String newString, String input) {			// A method for the word replacement
     	
