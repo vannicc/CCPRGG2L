@@ -1,0 +1,21 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TryFileWriter {
+	
+	public static void main(String[] args) {
+		
+		try {
+			FileWriter writer = new FileWriter ("D:\\MyFile.txt", true);
+			writer.write("Hi!");
+			writer.write("\r \n"); // writers a new line
+			writer.write("End of Text");
+			writer.close();
+			
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
