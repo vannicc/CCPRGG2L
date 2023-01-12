@@ -12,7 +12,7 @@ public class Attendance2 {
     static boolean wordFound = false;
     static String StringFile = "D:\\Attendance\\StringFile.txt";													                  // my file path                          
 
-    static void modifyFile(String filePath, String previousString, String newString, String input) {				// A method for the word replacement
+    static void modifyFile(String filePath, String previousString, String newString, String input) {			// A method for the word replacement
     	
         File fileToBeModified = new File(filePath);    
         String previousWord = "";
@@ -23,13 +23,13 @@ public class Attendance2 {
             reader = new BufferedReader(new FileReader(fileToBeModified));
             String line = reader.readLine();
              
-            while (line != null) {                                                  								        // a while loop that reads all the lines of text file and writes it into previousWord
+            while (line != null) {                                             // a while loop that reads all the lines of text file and writes it into previousWord
                 previousWord = previousWord + line + System.lineSeparator();
                 line = reader.readLine();
             }
 
-            String newWord = previousWord.replaceAll(previousString, newString);    								        // replacing oldString with newString in the oldContent
-            writer = new FileWriter(fileToBeModified);                              							        	// rewriting the input text file with newContent
+            String newWord = previousWord.replaceAll(previousString, newString);	 // replacing oldString with newString in the oldContent
+            writer = new FileWriter(fileToBeModified);                           	 // rewriting the input text file with newContent
             writer.write(newWord);
             
         }
@@ -38,7 +38,7 @@ public class Attendance2 {
         }
         finally {
             try {
-                reader.close();             																		                            // closing the resources
+                reader.close();             				// closing the resources
                 writer.close();
             }
             catch (IOException e) {
@@ -50,11 +50,11 @@ public class Attendance2 {
     static void finder(String filePath, String input) {																                      
         try {
             File readerObj = new File(filePath);
-            Scanner Reader = new Scanner(readerObj);																                        // instantiated a scanner object
+            Scanner Reader = new Scanner(readerObj);			
 
-            while (Reader.hasNextLine()) {                      												                  	// a while loop that reads the file line by line and checks whether the input word exists in the file
+            while (Reader.hasNextLine()) {               // a while loop that reads the file line by line and checks whether the input word exists in the file
                 String data = Reader.nextLine();                													
-                if (data.equals(input)) {																			                              // an if statement that tells the program if the input word exists in the file, the variable "wordFound" becomes true
+                if (data.equals(input)) {		// an if statement that tells the program if the input word exists in the file, the variable "wordFound" becomes true
                     wordFound = true;
                 }
             }
@@ -72,7 +72,7 @@ public class Attendance2 {
             File readerObj = new File(StringFile);
             Scanner Reader = new Scanner(readerObj);
 
-            while (Reader.hasNextLine()) {                       													                  // a while loop used to print the elements of the file line by line
+            while (Reader.hasNextLine()) {                       	// a while loop used to print the elements of the file line by line
                 String data = Reader.nextLine();
                 System.out.println(data);
             }
@@ -84,15 +84,15 @@ public class Attendance2 {
         }
     }
 
-    public static void main(String[] args) {																		                            // a method to display if the input is not found/invalid
+    public static void main(String[] args) {				// a method to display if the input is not found/invalid
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input: ");																				                                // reads the input
+        System.out.print("Input: ");					// reads the input
         String input = sc.nextLine();
 
-        finder(StringFile, input);            																		                          // calls finder method
+        finder(StringFile, input);            				// calls finder method
 
-        if (wordFound == true) {																					                                  // an if statement used to ask the user to input a new word if the first input is in the file
+        if (wordFound == true) {					// an if statement used to ask the user to input a new word if the first input is in the file
             System.out.print("New word: ");
             String newWord = sc.nextLine();
 
@@ -102,7 +102,7 @@ public class Attendance2 {
             output();
         }
         else {
-            System.out.println("<Invalid Text>\nOutput:");															                    // an else statement used to print "Invalid Text" if the input is not in the file
+            System.out.println("<Invalid Text>\nOutput:");		// an else statement used to print "Invalid Text" if the input is not in the file
             output();
         }
         sc.close();
