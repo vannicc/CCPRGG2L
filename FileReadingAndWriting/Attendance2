@@ -1,0 +1,109 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Scanner;
+ 
+public class Attendance2 {   
+	
+	static String input = "";   																					                                    // declaration of static variables
+    static String newWord = "";     
+    static boolean wordFound = false;
+    static String StringFile = "D:\\Attendance\\StringFile.txt";													                  // my file path                          
+
+    static void modifyFile(String filePath, String previousString, String newString, String input) {				// A method for the word replacement
+    	
+        File fileToBeModified = new File(filePath);    
+        String previousWord = "";
+        BufferedReader reader = null;
+        FileWriter writer = null;
+         
+        try {
+            reader = new BufferedReader(new FileReader(fileToBeModified));
+            String line = reader.readLine();
+             
+            while (line != null) {                                                  								        // a while loop that reads all the lines of text file and writes it into previousWord
+                previousWord = previousWord + line + System.lineSeparator();
+                line = reader.readLine();
+            }
+
+            String newWord = previousWord.replaceAll(previousString, newString);    								        // replacing oldString with newString in the oldContent
+            writer = new FileWriter(fileToBeModified);                              							        	// rewriting the input text file with newContent
+            writer.write(newWord);
+            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                reader.close();             																		                            // closing the resources
+                writer.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static void finder(String filePath, String input) {																                      
+        try {
+            File readerObj = new File(filePath);
+            Scanner Reader = new Scanner(readerObj);																                        // instantiated a scanner object
+
+            while (Reader.hasNextLine()) {                      												                  	// a while loop that reads the file line by line and checks whether the input word exists in the file
+                String data = Reader.nextLine();                													
+                if (data.equals(input)) {																			                              // an if statement that tells the program if the input word exists in the file, the variable "wordFound" becomes true
+                    wordFound = true;
+                }
+            }
+            Reader.close();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return;
+    }
+
+    static void output() {																							                                   
+        try {
+            File readerObj = new File(StringFile);
+            Scanner Reader = new Scanner(readerObj);
+
+            while (Reader.hasNextLine()) {                       													                  // a while loop used to print the elements of the file line by line
+                String data = Reader.nextLine();
+                System.out.println(data);
+            }
+            Reader.close();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {																		                            // a method to display if the input is not found/invalid
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Input: ");																				                                // reads the input
+        String input = sc.nextLine();
+
+        finder(StringFile, input);            																		                          // calls finder method
+
+        if (wordFound == true) {																					                                  // an if statement used to ask the user to input a new word if the first input is in the file
+            System.out.print("New word: ");
+            String newWord = sc.nextLine();
+
+            modifyFile(StringFile, input, newWord, input);
+
+            System.out.println("Output:");
+            output();
+        }
+        else {
+            System.out.println("<Invalid Text>\nOutput:");															                    // an else statement used to print "Invalid Text" if the input is not in the file
+            output();
+        }
+        sc.close();
+    }
