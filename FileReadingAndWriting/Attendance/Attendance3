@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Attendance3 {
+
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+    
+        System.out.print("Enter M: ");
+		int firstnum = scan.nextInt();
+		
+		System.out.print("Enter N: ");
+		int secondnum = scan.nextInt();
+        
+		System.out.println("\nThe first 15 numbers are: ");
+		System.out.print(firstnum + " " + secondnum + " ");
+		printFib(firstnum, secondnum, 2);
+    }
+    public static void printFib(int m, int n, int length) {
+    	if (length == 15) {
+    		return;
+    	}
+    	int nextnum = m + n;
+    	System.out.print(nextnum + " ");
+    	printFib(n, nextnum, length + 1);
+    }
+}
