@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Euclid {
+    static Scanner input = new Scanner(System.in); //init Scanner object
+
+    public static void main(String[] args) {
+        //initialize the two Numbers
+        int firstNum = 0;
+        int secondNum = 0;
+        try {
+            // ask user to input two numbers
+            System.out.print("Input First Number: ");
+            firstNum = input.nextInt();
+            System.out.print("Input Second Number: ");
+            secondNum = input.nextInt();
+        } catch (Exception e) {
+            System.exit(0);
+        } // catch data type error or any type of error
+
+        // check if the firstNumver is a palindrome
+        if (isPalindrome(firstNum)) // this method returns a boolean that determines whether the number passed as an argument is a palindrome or not
+        {
+            System.out.println("The first number " + firstNum + " is a palindrome"); //this will print out if the condition is true
+        }
+        else {
+            System.out.println("The first number " + firstNum + " is not a palindrome"); // if not print this instead
+        }
+
+
+        // check if the secondNumber is a palindrome
+        if (isPalindrome(secondNum)) {
+            System.out.println("The second number " + secondNum + " is a palindrome"); //this will print out if the condition is true
+
+        } else {
+            System.out.println("The second number " + secondNum + " is not a palindrome"); // if not print this instead
+        }
+
+        int GCD = getGCD(firstNum, secondNum); // this method returns the GCD value of the two numbers passed in.
+        System.out.println("GCD: " + GCD);
+
+        // get the suggested password
+        String password = getSuggestedPassword(firstNum, secondNum, GCD);
+        System.out.println("Suggested Password: " + password);
+
+
+    }
+
+    static boolean isPalindrome(int num) {
+        String numStr = Integer.toString(num); // convert num from int to string for easy conversion
+        String numReversed = reverse(numStr, 0);
+
+        //checker
+        if (numStr.equals(numReversed)) return true;
+        else return false;
+    }
+
+    static String reverse(String text, int count) {
+        int index = (text.length() - 1) - count; // get the current index
+        if (index < 0) {
+            return "";
+        } // base case
+        else {
+            return text.charAt(index) + reverse(text, count + 1); // get the current element from text array then recurse
+        }
+    }
+
+    static int getGCD(int a, int b) {
+        if (a < b) return getGCD(b, a); // if daw a is less than change a to b and b to a
+
+        else {
+            int remainder = a % b; // get remainder to determine if the b value is the GCD
+            if (remainder != 0) // if r is not equal to 0 daw change a to b and b to remainder
+            {
+                return getGCD(b, remainder);
+            } else return b; // if remainder is 0 the current b value is the GCD.
+        }
+    }
+
+    static String getSuggestedPassword(int firstNum, int secondNum, int GCD) {
+        return firstNum + "-" + secondNum + "-" + GCD;
+    }
+}
