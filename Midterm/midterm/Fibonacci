@@ -1,0 +1,54 @@
+import java.util.Scanner;
+//Fibo
+public class Fibonacci {
+    static Scanner input = new Scanner(System.in); // Scanner instance will be use for getting input from user
+    static double squareResult = 0; //initialize result globally
+    public static void main(String[] args) {
+        System.out.print("Input: ");
+        int num = 0;
+        try {num = input.nextInt();} // ask user to input a number
+        catch (Exception e) {System.exit(0);} //catch data type error or any error
+
+        // Determine swhether the num value is a palindrome or not
+        if (isPalindrome(num)) // call isPalindrome method to return a bool passing num as an argument
+        {
+            System.out.println("is Palindrome: TRUE. It is a Palindrome."); // Printout this if the condition is true.
+        }
+        else {
+            System.out.println("is Palindrome: FALSE. It is not a Palindrome."); //Print out this if false
+        }
+
+        //Determines whether the num value is a perfect square or not
+        if(isPerfectSquare(num)) {
+            System.out.println("is PerfectSquare: TRUE. it is a Perfect Square");
+            System.out.printf("result: %.4f square\n", squareResult);
+        }
+        else {
+            System.out.println("is PerfectSquare: FALSE. It is not a Perfect Square.");
+            System.out.printf("result: %.4f\n", squareResult);
+        }
+        // end
+
+    }
+    static boolean isPalindrome(int num) {
+        String numStr = Integer.toString(num); // convert num from int to String to make it easy to reverse
+        String numReversed =  reverse(numStr, 0); // reverse method returns a value of the argument passed in reverse.
+
+        // checker
+        if (numStr.equals(numReversed)) return true;
+        else return false;
+    }
+    static String reverse(String text, int count) {
+        int index = (text.length()-1) - count; // get the current index
+        if(index >= 0) return text.charAt(index) + reverse(text, ++count); //recurse
+        else return ""; // stop the recursion
+    }
+    static boolean isPerfectSquare(int num) {
+        int formula = (5 * (num*num) + 4); // this formula determines whether the number is a perfect square or not.
+        squareResult = Math.sqrt(formula);
+        double remainder = squareResult % 1;
+
+        if (remainder == 0) return true;
+        else return false;  
+    }
+}
