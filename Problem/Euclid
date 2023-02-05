@@ -1,0 +1,97 @@
+/*
+ * Java Program that checks if the two input numbers are palindrome or not.
+ * A number is palindrome if the number itself is equal to 
+ * the reverse of number
+ * The Java program can also be used to reverse a number
+ */
+
+import java.util.Scanner;
+
+public class Euclid {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); //instantiates a scanner class
+		 
+		System.out.println("First Input: ");
+		int palindrome = sc.nextInt();
+		System.out.println("Second Input: ");
+		int palindrome2 = sc.nextInt();
+		
+		// method call for the first input 
+		// if-else loop to print the result of the return value 
+		if(isPalindromic(palindrome)) {
+			System.out.println("First Input Number " + palindrome + " is a Palindrome" );
+		} else {
+			System.out.println("First Input Number " + palindrome + " is a NOT Palindrome");
+		}
+		
+		// method call for the second input
+		// if-else loop to print the result of the return value 
+		if (isPalindromic2(palindrome2)) {
+			System.out.println("Second Input Number " + palindrome2 + " is a Palindrome");
+		}else {
+			System.out.print("Second Input Number " + palindrome2 + " is a NOT Palindrome");
+		}
+		
+		// method call for the GCD
+		System.out.println("\n\nGCD: " + euclidRecur(palindrome,palindrome2));
+		
+		// prints out the suggested password for the lock box by concatenating the variables(input) and method call for the GCD
+		System.out.println("Suggested Password: " + palindrome + "-" + palindrome2 + "-" + euclidRecur(palindrome,palindrome2));
+		
+		sc.close();
+	}
+	//method that checks if the first input is palindromic
+	public static boolean isPalindromic(int number) {
+		
+		int palindrome = number;
+		int reverse = 0;
+		
+		while (palindrome != 0) {
+			int remainder = palindrome % 10;
+			reverse = reverse * 10 + remainder;
+			palindrome = palindrome / 10;
+		}
+		
+		//base case: if the number and reverse is equal the input is palindrome
+		if (number==reverse) {
+			
+		 return true;
+		 
+		}else {
+			
+		return false;
+		}
+	}
+	//method that checks if the second input is palindromic
+	public static boolean isPalindromic2(int num) {
+		int palindrome2 = num;
+		int reverse2 = 0;
+		
+		while (palindrome2 != 0) {
+			int remainder2 = palindrome2 % 10;
+			reverse2 = reverse2 * 10 + remainder2;
+			palindrome2 = palindrome2 / 10;
+		}
+		
+		//base case: if the number and reverse is equal the input is palindrome
+		if (num == reverse2) {
+			
+			return true;
+			
+		}else {
+		
+		return false;
+		}
+	}
+	// Recursive method that finds the GCD
+	public static int euclidRecur(int val1, int val2) {
+		
+		if (val2 == 0) {
+			return val1;
+		} else {
+			return euclidRecur(val2, val1%val2);
+		}
+
+	}
+}
