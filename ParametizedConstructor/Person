@@ -5,22 +5,22 @@ public class Person {
    double weight;
    int numOfJowa;
 	    
-   Person(String name, String gender, double weight, int numOfJowa){  
-       this.name = name;  
-       this.gender = gender;  
-       this.weight = weight;  
-       this.numOfJowa = numOfJowa;  
+   Person(String _name, String _gender, double _weight, int _numOfJowa){  
+       this.name = _name;  
+       this.gender = _gender;  
+       this.weight = _weight;  
+       this.numOfJowa = _numOfJowa;  
    }  
-   public void info(){
+   public void printInfo(){
         System.out.println(name + " - " + gender + " - " + weight + " - " + numOfJowa);
    }  
 	   
    public static void main(String args[]){  
-	   Person person1 = new Person ("Alex", "Male", 55.7, 3);  
+	   Person person1 = new Person ("Alex", "Male", 55.7, 3);
 	   Person person2 = new Person ("David", "Male", 66.8, 2);  
 	   Person person3 = new Person ("Angel", "Female", 80.2, 24);  
-	   person1.info();  
-	   person2.info();  
-	   person3.info();
+	   person1.printInfo();  
+	   person2.printInfo();  
+	   person3.printInfo();
    }  
 }
