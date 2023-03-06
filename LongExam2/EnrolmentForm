@@ -238,28 +238,43 @@ public class EnrolmentForm {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			
-			boolean enrollmentSuccess = true;
+			boolean enrollmentSuccess = false;
 			EnrolleeCredentials enroll = new EnrolleeCredentials("","","",comboCourseName,comboStudentType);
 				totalPayableFee = enroll.totalFees(comboStudentType, comboCourseName, 0, 0);
 			
-				
+				if (textFirstName.getText().equals("") || textLastName.getText().equals("") || textIDNumber.getText().equals("") || comboStudentType.equals("") || comboCourseName.equals("")) {
+					enrollmentSuccess = false;
+				}
+				else if (textFirstName.getText().equals("First Name") || textLastName.getText().equals("Last Name") || textIDNumber.getText().equals("ID Number") || comboStudentType.equals("Select Student Type") || comboCourseName.equals("Select Course")) {	
+					enrollmentSuccess = false;
+					
+				} else {
+					enrollmentSuccess = true;
+				}
+
+
 				if (enrollmentSuccess) {
+					
+					btnEnrollStudent.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							Object[] row = new Object[6];
+							row[0] = textFirstName.getText();
+							row[1] = textLastName.getText();
+							row[2] = textIDNumber.getText();
+							row[3] = comboBoxCourse.getSelectedItem();
+							row[4] = comboBoxStudentType.getSelectedItem();
+							row[5] = totalPayableFee;
+					
+							model.addRow(row);
+							}
+						}); 
+					
 					JOptionPane.showMessageDialog(null, "Enrollment Complete!");
-					}
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "Invalid Input, Please try again!");
+				}
 				
-				btnEnrollStudent.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Object[] row = new Object[6];
-						row[0] = textFirstName.getText();
-						row[1] = textLastName.getText();
-						row[2] = textIDNumber.getText();
-						row[3] = comboBoxCourse.getSelectedItem();
-						row[4] = comboBoxStudentType.getSelectedItem();
-						row[5] = totalPayableFee;
-				
-						model.addRow(row);
-						}
-					}); 
 				} 
 		});
 		btnEnrollStudent.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -271,13 +286,13 @@ public class EnrolmentForm {
 		lblSchoolPoster.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(lblSchoolPoster);
 		
-		JLabel lblCourse = new JLabel("Course");
+		JLabel lblCourse = new JLabel("Student Type");
 		lblCourse.setForeground(new Color(255, 255, 255));
 		lblCourse.setBounds(387, 251, 224, 14);
 		panel.add(lblCourse);
 		lblCourse.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblStudType = new JLabel("Student Type");
+		JLabel lblStudType = new JLabel("Course");
 		lblStudType.setForeground(new Color(255, 255, 255));
 		lblStudType.setBounds(387, 308, 224, 14);
 		panel.add(lblStudType);
