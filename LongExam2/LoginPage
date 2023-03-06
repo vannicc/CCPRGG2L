@@ -26,7 +26,7 @@ public class LoginPage {
 
 	private JFrame Facebook;
 	private JTextField txtEmailOrPhone;
-	private JPasswordField passwordField;
+	private JPasswordField pfPassword;
 
 	/**
 	 * Launch the application.
@@ -61,16 +61,16 @@ public class LoginPage {
 		Facebook.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Facebook.getContentPane().setLayout(null);
 		
-		JPanel panelWhiteFacebook = new JPanel();
-		panelWhiteFacebook.setBackground(new Color(255, 255, 255));
-		panelWhiteFacebook.setBounds(10, 10, 1246, 663);
-		Facebook.getContentPane().add(panelWhiteFacebook);
-		panelWhiteFacebook.setLayout(null);
+		JPanel panelWhite = new JPanel();
+		panelWhite.setBackground(new Color(255, 255, 255));
+		panelWhite.setBounds(10, 10, 1246, 663);
+		Facebook.getContentPane().add(panelWhite);
+		panelWhite.setLayout(null);
 		
 		JPanel panelBlueSignIn = new JPanel();
 		panelBlueSignIn.setBounds(664, 0, 582, 663);
 		panelBlueSignIn.setBackground(new Color(0, 128, 255));
-		panelWhiteFacebook.add(panelBlueSignIn);
+		panelWhite.add(panelBlueSignIn);
 		panelBlueSignIn.setLayout(null);
 		
 		JPanel panelSignIn = new JPanel();
@@ -128,7 +128,7 @@ public class LoginPage {
 		btnLogIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if ((txtEmailOrPhone.getText().equals("mikoclark19@gmail.com") && passwordField.getText().equals("password1") || (txtEmailOrPhone.getText().equals("jericolim32@gmail.com") && passwordField.getText().equals("password2")))) {
+				if ((txtEmailOrPhone.getText().equals("mikoclark19@gmail.com") && pfPassword.getText().equals("password1") || (txtEmailOrPhone.getText().equals("jericolim32@gmail.com") && pfPassword.getText().equals("password2")))) {
 					EnrolmentForm enroll = new EnrolmentForm();
 					Facebook.dispose();
 					enroll.main(null);
@@ -145,12 +145,12 @@ public class LoginPage {
 		btnLogIn.setBounds(23, 212, 325, 66);
 		panelSignIn.add(btnLogIn);
 		
-		JPanel panelUsername = new JPanel();
-		panelUsername.setBorder(new LineBorder(new Color(0, 128, 255)));
-		panelUsername.setBackground(new Color(255, 255, 255));
-		panelUsername.setBounds(22, 22, 326, 67);
-		panelSignIn.add(panelUsername);
-		panelUsername.setLayout(null);
+		JPanel panelEmail = new JPanel();
+		panelEmail.setBorder(new LineBorder(new Color(0, 128, 255)));
+		panelEmail.setBackground(new Color(255, 255, 255));
+		panelEmail.setBounds(22, 22, 326, 67);
+		panelSignIn.add(panelEmail);
+		panelEmail.setLayout(null);
 		
 		JPanel panelPassword = new JPanel();
 		panelPassword.setBorder(new LineBorder(new Color(0, 128, 255)));
@@ -159,40 +159,40 @@ public class LoginPage {
 		panelSignIn.add(panelPassword);
 		panelPassword.setLayout(null);
 		
-		passwordField = new JPasswordField();
-		passwordField.setForeground(new Color(192, 192, 192));
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		passwordField.addFocusListener(new FocusAdapter() {
+		pfPassword = new JPasswordField();
+		pfPassword.setForeground(new Color(192, 192, 192));
+		pfPassword.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		pfPassword.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-			if (passwordField.getText().equals("Password")) {
-				passwordField.setEchoChar('●');
-				passwordField.setText("");
+			if (pfPassword.getText().equals("Password")) {
+				pfPassword.setEchoChar('●');
+				pfPassword.setText("");
 			} else {
-				passwordField.selectAll();
+				pfPassword.selectAll();
 			}
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if (passwordField.getText().equals("")) {
-					passwordField.setText("Password");
+				if (pfPassword.getText().equals("")) {
+					pfPassword.setText("Password");
 				}
 			}
 		});
-		passwordField.setBounds(15, 1, 303, 64);
-		passwordField.setEchoChar((char)0);
-		passwordField.setText("Password");
-		panelPassword.add(passwordField);
-		passwordField.setBorder(null);
+		pfPassword.setBounds(15, 1, 303, 64);
+		pfPassword.setEchoChar((char)0);
+		pfPassword.setText("Password");
+		panelPassword.add(pfPassword);
+		pfPassword.setBorder(null);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox(" Remember me");
-		chckbxNewCheckBox.setBackground(new Color(255, 255, 255));
-		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		chckbxNewCheckBox.setBounds(241, 171, 107, 21);
-		panelSignIn.add(chckbxNewCheckBox);
+		JCheckBox chckbxRememberMe = new JCheckBox(" Remember me");
+		chckbxRememberMe.setBackground(new Color(255, 255, 255));
+		chckbxRememberMe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		chckbxRememberMe.setBounds(241, 171, 107, 21);
+		panelSignIn.add(chckbxRememberMe);
 		
-		JButton btnNewButton = new JButton("Create new account");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton btnCreateNewAcc = new JButton("Create new account");
+		btnCreateNewAcc.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			SignUp signup = new SignUp();
@@ -200,11 +200,11 @@ public class LoginPage {
 			signup.main(null);
 			}
 		});
-		btnNewButton.setBounds(23, 333, 325, 55);
-		panelSignIn.add(btnNewButton);
-		btnNewButton.setBackground(new Color(0, 225, 56));
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 19));
+		btnCreateNewAcc.setBounds(23, 333, 325, 55);
+		panelSignIn.add(btnCreateNewAcc);
+		btnCreateNewAcc.setBackground(new Color(0, 225, 56));
+		btnCreateNewAcc.setForeground(new Color(255, 255, 255));
+		btnCreateNewAcc.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
 		
 		
@@ -226,27 +226,27 @@ public class LoginPage {
 		lblFacebookMeta.setBounds(183, 640, 389, 13);
 		panelBlueSignIn.add(lblFacebookMeta);
 		
-		JLabel lblAroundYouOn = new JLabel("around you on Facebook.");
-		lblAroundYouOn.setBounds(54, 260, 711, 99);
-		lblAroundYouOn.setFont(new Font("Yu Gothic", Font.BOLD, 25));
-		panelWhiteFacebook.add(lblAroundYouOn);
+		JLabel lblFBDes = new JLabel("around you on Facebook.");
+		lblFBDes.setBounds(54, 260, 711, 99);
+		lblFBDes.setFont(new Font("Yu Gothic", Font.BOLD, 25));
+		panelWhite.add(lblFBDes);
 		
 		JLabel lblConnectWithFriends = new JLabel("Connect with friends and the world");
 		lblConnectWithFriends.setBounds(54, 230, 711, 99);
 		lblConnectWithFriends.setFont(new Font("Yu Gothic", Font.BOLD, 25));
-		panelWhiteFacebook.add(lblConnectWithFriends);
+		panelWhite.add(lblConnectWithFriends);
 		
 		JLabel lblFacebook = new JLabel("facebook");
 		lblFacebook.setBounds(54, 189, 427, 61);
 		lblFacebook.setFont(new Font("Tahoma", Font.BOLD, 55));
 		lblFacebook.setForeground(new Color(0, 128, 255));
-		panelWhiteFacebook.add(lblFacebook);
+		panelWhite.add(lblFacebook);
 		
 		JLabel lblLanguages = new JLabel("English (US)   Filipino   Bisaya   Español   日本語   한국어   中文(简体)   العربية   Português (Brasil)   Français (France)   Deutsch");
 		lblLanguages.setForeground(new Color(114, 114, 114));
 		lblLanguages.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblLanguages.setBounds(10, 635, 598, 23);
-		panelWhiteFacebook.add(lblLanguages);
+		panelWhite.add(lblLanguages);
 		
 		JLabel lblPlus = new JLabel("+");
 		lblPlus.setOpaque(true);
@@ -255,6 +255,6 @@ public class LoginPage {
 		lblPlus.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblPlus.setBackground(new Color(238, 238, 238));
 		lblPlus.setBounds(632, 640, 19, 13);
-		panelWhiteFacebook.add(lblPlus);
+		panelWhite.add(lblPlus);
 	}	
 }
