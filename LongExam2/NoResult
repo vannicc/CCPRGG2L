@@ -1,0 +1,71 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class NoResult {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					NoResult window = new NoResult();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public NoResult() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 0, 0));
+		frame.setBounds(100, 100, 423, 139);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 215, 215));
+		panel.setBounds(10, 10, 389, 82);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("No Search Results");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 21));
+		lblNewLabel.setBounds(0, 0, 195, 43);
+		panel.add(lblNewLabel);
+		
+		JLabel lblYourSearchDid = new JLabel("Your search did not return any results. Please try again with other");
+		lblYourSearchDid.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblYourSearchDid.setBounds(10, 37, 369, 23);
+		panel.add(lblYourSearchDid);
+		
+		JLabel lblInformation = new JLabel("information.");
+		lblInformation.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		lblInformation.setBounds(10, 53, 369, 23);
+		panel.add(lblInformation);
+	}
+}
